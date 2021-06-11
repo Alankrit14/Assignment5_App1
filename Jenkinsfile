@@ -6,7 +6,7 @@ pipeline
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'Maven 3.8.1') {
+                withMaven(maven : 'MAVEN_HOME') {
                     bat 'mvn clean compile'
                 }
             }
@@ -14,14 +14,14 @@ pipeline
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'Maven 3.8.1') {
+                withMaven(maven : 'MAVEN_HOME') {
                     bat 'mvn test'
                 }
             }
         }
         stage ('Installing Stage') {
             steps {
-                withMaven(maven : 'Maven 3.8.1') {
+                withMaven(maven : 'MAVEN_HOME') {
                     bat 'mvn install'
                 }
             }
