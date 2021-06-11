@@ -7,6 +7,6 @@ node
 
         stage ('Compile-Package') {
             def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
-            sh "${mvnHome}/bin/mvn package"
+            bat "${mvnHome}/bin/mvn package"
         }
 }
