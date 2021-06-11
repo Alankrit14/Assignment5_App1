@@ -1,30 +1,13 @@
-pipeline 
+node 
 {
-    agent any
-
-    stages {
-        stage ('Compile Stage') {
-
-            steps {
-                withMaven(maven : 'MAVEN_HOME') {
-                    bat 'mvn clean compile'
-                }
-            }
+        stage ('SCM Checkout') {
+            git 'https://github.com/Alankrit14/Assignment5_App1'
         }
-        stage ('Testing Stage') {
+    
 
-            steps {
-                withMaven(maven : 'MAVEN_HOME') {
-                    bat 'mvn test'
-                }
-            }
-        }
-        stage ('Installing Stage') {
-            steps {
-                withMaven(maven : 'MAVEN_HOME') {
-                    bat 'mvn install'
-                }
-            }
+        stage ('Compile-Package') {
+            def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
+            sh "${mvnHome}/bin/mvn package"
         }
     }
 }
