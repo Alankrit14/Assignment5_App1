@@ -4,7 +4,7 @@ stages {
 stage ('Compile Stage') {
 steps {
 withMaven(maven : 'MAVEN_HOME', jdk: 'JAVA_HOME') {
-bat'mvn clean compile'
+bat'mvn clean'
 }
 }
 }
